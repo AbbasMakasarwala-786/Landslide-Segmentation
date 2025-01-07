@@ -1,10 +1,10 @@
 streamlit==1.16.0
 opencv-python-headless==4.5.5.62
 numpy==1.23.5
+setuptools>=65.5.1
+wheel
 tensorflow==2.17.1
 Pillow==9.3.0
 matplotlib==3.6.2
 zipfile36==0.1.0
-setuptools>=65.5.1
-wheel
 pathlib==1.0.1
