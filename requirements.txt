@@ -1,5 +1,3 @@
-h5py==3.8.0
-pathlib==1.0.1
 streamlit==1.16.0
 opencv-python-headless==4.5.5.62
 numpy==1.23.5
@@ -9,3 +7,4 @@ matplotlib==3.6.2
 zipfile36==0.1.0
 setuptools>=65.5.1
 wheel
+pathlib==1.0.1
