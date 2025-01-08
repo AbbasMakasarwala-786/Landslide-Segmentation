@@ -10,6 +10,7 @@ from tensorflow.keras.models import Model
 from tensorflow.keras.callbacks import EarlyStopping,ModelCheckpoint,ReduceLROnPlateau,CSVLogger
 from tensorflow.keras.models import load_model
 import gdown
+import requests
 
 image_folder='image_folder'
 image_files=['image_100.png','image_100.png','image_1059.png','image_1064.png']
