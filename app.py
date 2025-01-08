@@ -89,7 +89,7 @@ if selected_image:
         # Download weights if not already downloaded
         if not os.path.exists(output):
             print("Downloading model weights...")
-            gdown.download('https://drive.google.com/file/d/1IgoGnmrtGOFzkgzcarvUjsUnZzyjWp54/view?usp=sharing', output, quiet=False)
+            gdown.download('https://drive.google.com/file/d/1IgoGnmrtGOFzkgzcarvUjsUnZzyjWp54/view?usp=sharing', output,fuzzy=True,quiet=False)
 
         model.load_weights(output)  
 
