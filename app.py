@@ -17,14 +17,6 @@ st.markdown("# Landslide Image Segemntation using U-Net  ")
 
 file_id = '1IgoGnmrtGOFzkgzcarvUjsUnZzyjWp54'
 
-# Local filename to save the model weights
-output = "weights.h5"
-
-# Download weights if not already downloaded
-if not os.path.exists(output):
-    print("Downloading model weights...")
-    gdown.download(f"https://drive.google.com/uc?id={file_id}", output, quiet=False)
-
 
 selected_image=st.selectbox("Select an image from this options",image_files)
 
@@ -95,10 +87,14 @@ if selected_image:
 
         outputs=Conv2D(1,1,padding='same',activation='sigmoid')(d4)
         model=Model(inputs=inputs,outputs=outputs,name='u-net')
+        output = "weights.h5"
+        if not os.path.exists(output):
+            print("Downloading model weights...")
+            gdown.download(f"https://drive.google.com/uc?id={file_id}", output, quiet=False)
         model.load_weights(output)  
 
         return model
-    
+        
     test_data=os.path.join(image_folder,selected_image)
     image = tf.io.read_file(test_data)
     image = tf.image.decode_png(image, channels=3)  # Decode image as RGB
