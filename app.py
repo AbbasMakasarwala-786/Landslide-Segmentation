@@ -85,13 +85,17 @@ if selected_image:
         outputs=Conv2D(1,1,padding='same',activation='sigmoid')(d4)
         model=Model(inputs=inputs,outputs=outputs,name='u-net')
         output = "weights.h5"
-
-        # Download weights if not already downloaded
+        url = "https://www.dropbox.com/scl/fi/y74r9lcait1jmcywseg0b/weights.h5?rlkey=e5f6u1puvvv7uvj3vjd6bdvqj&st=l3osu4iz&dl=0"  # Direct download link
+        
+        # Check if the file exists; if not, download it
         if not os.path.exists(output):
-            print("Downloading model weights...")
-            gdown.download('https://drive.google.com/file/d/1IgoGnmrtGOFzkgzcarvUjsUnZzyjWp54/view?usp=sharing', output,fuzzy=True,quiet=False)
-
-        model.load_weights(output)  
+            print("Downloading model weights from Dropbox...")
+            response = requests.get(url)
+            with open(output, 'wb') as f:
+                f.write(response.content)
+            print("Download complete.")
+        
+                model.load_weights(output)  
 
         return model
         
