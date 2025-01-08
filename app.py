@@ -88,7 +88,12 @@ if selected_image:
         outputs=Conv2D(1,1,padding='same',activation='sigmoid')(d4)
         model=Model(inputs=inputs,outputs=outputs,name='u-net')
         output = "weights.h5"
-        gdown.download(f"https://drive.google.com/uc?id={file_id}", output, quiet=False)
+
+        # Download weights if not already downloaded
+        if not os.path.exists(output):
+            print("Downloading model weights...")
+            gdown.download(f"https://drive.google.com/uc?id={file_id}", output, quiet=False)
+
         model.load_weights(output)  
 
         return model
