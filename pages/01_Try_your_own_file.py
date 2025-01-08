@@ -9,7 +9,17 @@ from tensorflow.keras.layers import Input,Conv2D,BatchNormalization,Activation,M
 from tensorflow.keras.models import Model
 from tensorflow.keras.callbacks import EarlyStopping,ModelCheckpoint,ReduceLROnPlateau,CSVLogger
 from tensorflow.keras.models import load_model
+import gdown
 
+file_id = '1IgoGnmrtGOFzkgzcarvUjsUnZzyjWp54'
+
+# Local filename to save the model weights
+output = "weights.h5"
+
+# Download weights if not already downloaded
+if not os.path.exists(output):
+    print("Downloading model weights...")
+    gdown.download(f"https://drive.google.com/uc?id={file_id}", output, quiet=False)
 
 def process_image(uploaded_image):
     image = tf.image.decode_image(uploaded_image.read(), channels=3)
