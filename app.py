@@ -95,7 +95,7 @@ if selected_image:
 
         outputs=Conv2D(1,1,padding='same',activation='sigmoid')(d4)
         model=Model(inputs=inputs,outputs=outputs,name='u-net')
-        model.load_weights('model/weights.h5')  
+        model.load_weights(output)  
 
         return model
     
