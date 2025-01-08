@@ -9,10 +9,22 @@ from tensorflow.keras.layers import Input,Conv2D,BatchNormalization,Activation,M
 from tensorflow.keras.models import Model
 from tensorflow.keras.callbacks import EarlyStopping,ModelCheckpoint,ReduceLROnPlateau,CSVLogger
 from tensorflow.keras.models import load_model
+import gdown
 
 image_folder='image_folder'
 image_files=['image_100.png','image_100.png','image_1059.png','image_1064.png']
 st.markdown("# Landslide Image Segemntation using U-Net  ")
+
+file_id = '1IgoGnmrtGOFzkgzcarvUjsUnZzyjWp54'
+
+# Local filename to save the model weights
+output = "weights.h5"
+
+# Download weights if not already downloaded
+if not os.path.exists(output):
+    print("Downloading model weights...")
+    gdown.download(f"https://drive.google.com/uc?id={file_id}", output, quiet=False)
+
 
 selected_image=st.selectbox("Select an image from this options",image_files)
 
