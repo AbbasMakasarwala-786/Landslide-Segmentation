@@ -8,3 +8,4 @@ Pillow==9.3.0
 zipfile36==0.1.0
 pathlib==1.0.1
 altair>=4.0
+gdown==4.7.1
