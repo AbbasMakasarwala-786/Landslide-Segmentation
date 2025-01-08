@@ -95,7 +95,7 @@ if selected_image:
                 f.write(response.content)
             print("Download complete.")
         
-                model.load_weights(output)  
+        model.load_weights(output)  
 
         return model
         
