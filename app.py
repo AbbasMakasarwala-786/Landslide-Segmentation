@@ -11,6 +11,7 @@ from tensorflow.keras.callbacks import EarlyStopping,ModelCheckpoint,ReduceLROnP
 from tensorflow.keras.models import load_model
 import gdown
 import requests
+import h5py
 
 image_folder='image_folder'
 image_files=['image_100.png','image_100.png','image_1059.png','image_1064.png']
@@ -96,7 +97,15 @@ if selected_image:
                 f.write(response.content)
             print("Download complete.")
         
-        model.load_weights(output)  
+        if os.path.exists(output):
+            try:
+                with h5py.File(output, 'r') as f:
+                    print("File is valid and opened successfully.")
+                model.load_weights(output)
+            except OSError as e:
+                print(f"Error loading weights: {e}")
+        else:
+            print("File does not exist at the specified location.")
 
         return model
         
