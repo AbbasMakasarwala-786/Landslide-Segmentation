@@ -59,7 +59,7 @@ def build_unet(input_shape):
     outputs = tf.keras.layers.Conv2D(1, 1, padding='same', activation='sigmoid')(d4)
 
     model = tf.keras.models.Model(inputs=inputs, outputs=outputs, name='u-net')
-    model.load_weights('model/weights.h5')  # Load weights
+    model.load_weights('output')  # Load weights
 
     return model
 
