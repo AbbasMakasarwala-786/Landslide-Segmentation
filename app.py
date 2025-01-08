@@ -15,9 +15,6 @@ image_folder='image_folder'
 image_files=['image_100.png','image_100.png','image_1059.png','image_1064.png']
 st.markdown("# Landslide Image Segemntation using U-Net  ")
 
-file_id = '1IgoGnmrtGOFzkgzcarvUjsUnZzyjWp54'
-
-
 selected_image=st.selectbox("Select an image from this options",image_files)
 
 
@@ -92,7 +89,7 @@ if selected_image:
         # Download weights if not already downloaded
         if not os.path.exists(output):
             print("Downloading model weights...")
-            gdown.download(f"https://drive.google.com/uc?id={file_id}", output, quiet=False)
+            gdown.download('https://drive.google.com/file/d/1IgoGnmrtGOFzkgzcarvUjsUnZzyjWp54/view?usp=sharing', output, quiet=False)
 
         model.load_weights(output)  
 
