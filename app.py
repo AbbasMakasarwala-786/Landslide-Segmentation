@@ -86,27 +86,8 @@ if selected_image:
 
         outputs=Conv2D(1,1,padding='same',activation='sigmoid')(d4)
         model=Model(inputs=inputs,outputs=outputs,name='u-net')
-        output = "weights.h5"
-        url = "https://www.dropbox.com/scl/fi/y74r9lcait1jmcywseg0b/weights.h5?rlkey=e5f6u1puvvv7uvj3vjd6bdvqj&st=l3osu4iz&dl=0"  # Direct download link
         
-        # Check if the file exists; if not, download it
-        if not os.path.exists(output):
-            print("Downloading model weights from Dropbox...")
-            response = requests.get(url)
-            with open(output, 'wb') as f:
-                f.write(response.content)
-            print("Download complete.")
-        
-        if os.path.exists(output):
-            try:
-                with h5py.File(output, 'r') as f:
-                    print("File is valid and opened successfully.")
-                model.load_weights(output)
-            except OSError as e:
-                print(f"Error loading weights: {e}")
-        else:
-            print("File does not exist at the specified location.")
-
+        model.load_weights('model/weights.h5')
         return model
         
     test_data=os.path.join(image_folder,selected_image)
